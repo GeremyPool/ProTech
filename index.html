@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProTech</title>
+    <style>
+        /* Estilos básicos */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #0078d7;
+            color: #fff;
+            padding: 20px 10px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header h1 span {
+            color: lime;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            max-width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        .card p {
+            margin: 10px;
+        }
+        .card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0078d7;
+        }
+        .card a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #0078d7;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .card a:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><span>Pro</span>Tech</h1>
+        <p>SOLUCIONES TECNOLÓGICAS A TU PUERTA.</p>
+    </header>
+
+    <div class="container">
+        <h2>Servicios que ofrecemos</h2>
+
+        <div class="section">
+            <!-- Servicio 1 -->
+            <div class="card">
+                <img src="https://sotesa.com/wp-content/uploads/2016/12/service-428539.jpg" alt="Mantenimiento preventivo">
+                <h3>Mantenimiento Preventivo</h3>
+                <p>Optimización de hardware y limpieza profunda para prolongar la vida útil de tu equipo.</p>
+                <p class="price">Q300</p>
+                <a href="detalle1.html">Ver Detalles</a>
+            </div>
+
+            <!-- Servicio 2 -->
+            <div class="card">
+                <img src="https://ogisa.es/wp-content/uploads/2023/05/Publicidad-Programatica-2023-05-24T100229.341.jpg" alt="Mantenimiento correctivo">
+                <h3>Mantenimiento Correctivo</h3>
+                <p>Reparación de fallos en hardware y diagnóstico avanzado para problemas críticos.</p>
+                <p class="price">Q340</p>
+                <a href="detalle2.html">Ver Detalles</a>
+            </div>
+
+            <!-- Servicio 3 -->
+            <div class="card">
+                <img src="https://th.bing.com/th/id/OIP.-Nhca1gLj3tAhCHj5AL_XQHaEK?rs=1&pid=ImgDetMain" alt="Instalación de Sistema Operativo">
+                <h3>Instalación de Software</h3>
+                <p>Servicio profesional de instalacion de Software y Programas para asegurar que tu equipo funcione de manera óptima segun tus necesidades.</p>
+                <p class="price">Q265</p>
+                <a href="detalle3.html">Ver Detalles</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
