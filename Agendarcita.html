@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0078d7;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="text"], input[type="email"], input[type="radio"], input[type="submit"], textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #005bb5;
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        #contact-details, #card-details {
+            display: none; /* Ocultos inicialmente */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agendar Cita</h1>
+
+        <!-- Nombre completo -->
+        <label for="full-name">Nombre completo:</label>
+        <input type="text" id="full-name" name="full-name" placeholder="Escribe tu nombre completo" required>
+
+        <!-- Selección de día -->
+        <label for="day">Selecciona el día:</label>
+        <select id="day" name="day">
+            <option value="lunes">Lunes</option>
+            <option value="martes">Martes</option>
+            <option value="miercoles">Miércoles</option>
+            <option value="jueves">Jueves</option>
+            <option value="viernes">Viernes</option>
+            <option value="sabado">Sábado</option>
+            <option value="domingo">Domingo</option>
+        </select>
+
+        <!-- Selección de hora -->
+        <label for="time">Selecciona el horario:</label>
+        <select id="time" name="time">
+            <option value="8:00am">8:00 AM</option>
+            <option value="9:00am">9:00 AM</option>
+            <option value="10:00am">10:00 AM</option>
+            <option value="11:00am">11:00 AM</option>
+            <option value="12:00pm">12:00 PM</option>
+            <option value="1:00pm">1:00 PM</option>
+            <option value="2:00pm">2:00 PM</option>
+            <option value="3:00pm">3:00 PM</option>
+            <option value="4:00pm">4:00 PM</option>
+            <option value="5:00pm">5:00 PM</option>
+        </select>
+
+        <!-- Método de notificación -->
+        <label>¿Cómo deseas recibir la confirmación?</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="notification" value="email" onclick="mostrarContacto('email')"> Correo Electrónico
+            </label>
+            <label>
+                <input type="radio" name="notification" value="sms" onclick="mostrarContacto('sms')"> SMS
+            </label>
+            <label>
+                <input type="radio" name="notification" value="call" onclick="mostrarContacto('call')"> Llamada
+            </label>
+        </div>
+
+        <!-- Campo dinámico para contacto -->
+        <div id="contact-details">
+            <label id="contact-label" for="contact-input"></label>
+            <input type="text" id="contact-input" name="contact-input" placeholder="">
+        </div>
+
+        <!-- Método de pago -->
+        <label>Método de pago:</label>
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="payment-method" value="cash" onclick="mostrarPago('cash')"> Efectivo
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="card" onclick="mostrarPago('card')"> Tarjeta
+            </label>
+        </div>
+
+        <!-- Datos de la tarjeta -->
+        <div id="card-details">
+            <label for="card-number">Número de tarjeta:</label>
+            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456">
+
+            <label for="card-name">Nombre en la tarjeta:</label>
+            <input type="text" id="card-name" name="card-name" placeholder="Nombre completo">
+
+            <label for="expiry-date">Fecha de vencimiento:</label>
+            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA">
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" placeholder="123">
+        </div>
+
+        <!-- Botón de confirmación -->
+        <input type="submit" value="Confirmar Cita">
+    </div>
+
+    <script>
+        function mostrarContacto(tipo) {
+            const contactDetails = document.getElementById('contact-details');
+            const contactLabel = document.getElementById('contact-label');
+            const contactInput = document.getElementById('contact-input');
+
+            contactDetails.style.display = 'block';
+
+            if (tipo === 'email') {
+                contactLabel.textContent = 'Ingresa tu correo electrónico:';
+                contactInput.placeholder = 'ejemplo@correo.com';
+                contactInput.type = 'email';
+            } else if (tipo === 'sms' || tipo === 'call') {
+                contactLabel.textContent = 'Ingresa tu número de teléfono:';
+                contactInput.placeholder = '555-123-4567';
+                contactInput.type = 'text';
+            }
+        }
+
+        function mostrarPago(metodo) {
+            const cardDetails = document.getElementById('card-details');
+            if (metodo === 'card') {
+                cardDetails.style.display = 'block';
+            } else {
+                cardDetails.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
